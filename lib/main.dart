@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:top_filmes/ui/pages/movies_page.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: Strings.appName,
-      
+      home: MoviesPage(),
     );
   }
 }
