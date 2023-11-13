@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:top_filmes/data/repositories/dio_repository.dart';
+import 'package:top_filmes/data/models/movie_model.dart';
+import 'package:top_filmes/data/repositories/dio_repository.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
 
 class MoviesPage extends StatelessWidget {
@@ -7,7 +8,7 @@ class MoviesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //DioRepository dioRepository = DioRepository();
+    DioRepository dioRepository = DioRepository();
     return MaterialApp(
       home: DefaultTabController(
         length: 2,
@@ -23,16 +24,49 @@ class MoviesPage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              GridView.count(
-                crossAxisCount: 3,
-                scrollDirection: Axis.vertical,
-                children: List.generate(100, (index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('aaaaaaa $index'),
-                  );
-                }),
-              ),
+              FutureBuilder(
+                  future: dioRepository.getMovies(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Desculpe Ocorreu um erro ${snapshot.error}');
+                    } else if (snapshot.hasData) {
+                      final itens = snapshot.data as List<MovieModel>;
+                      return GridView.count(
+                        crossAxisCount: 2,
+                        scrollDirection: Axis.vertical,
+                        children: List.generate(itens.length, (index) {
+                          return InkWell(
+                            onTap: () {},
+                            child: SizedBox(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 200,
+                                    padding: const EdgeInsets.all(8.0),
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          itens[index].posterPath,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  SizedBox(
+                                    child: Text(itens[index].title),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  }),
               const Text('Filmes Mais avaliados'),
             ],
           ),
