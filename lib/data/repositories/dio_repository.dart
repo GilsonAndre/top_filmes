@@ -3,18 +3,18 @@ import 'package:top_filmes/data/erros/exceptions.dart';
 import 'package:top_filmes/data/models/movie_model.dart';
 
 //chave da api
-const String apiKey = 'https://api.themoviedb.org/3/movie/popular?';
+const String apiKey = 'https://api.themoviedb.org/3/movie/';
 
 class DioRepository {
   //importando o dio
   final dio = Dio();
 
   //função responsavel por pegar os filmes e dar o map
-  Future<List<MovieModel>> getMovies() async {
+  Future<List<MovieModel>> getMovies(String typeMovie) async {
     //usa a url para pegar os filmes da api
     //queryparameters é usado para personalizar como vai vir a minha requisição
     final response = await dio.get(
-      apiKey,
+      '$apiKey$typeMovie',
       queryParameters: {
         'api_key': 'fcbd2848e04db52bc7b9eaa897532e38',
         'language': 'pt-BR',
