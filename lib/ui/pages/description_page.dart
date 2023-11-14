@@ -21,8 +21,7 @@ class DescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppTheme appTheme = AppTheme();
     return MaterialApp(
-      themeMode: ThemeMode.system,
-      theme: appTheme.themeLight(),
+      theme: appTheme.themeDark(),
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -43,15 +42,28 @@ class DescriptionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 500,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(posterPath),
+              Stack(
+                children: [
+                  Positioned(
+                    child: Container(
+                      height: 500,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(posterPath),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    bottom: 20,
+                    child: Text(
+                      '${Strings.note} ${voteAverage.toStringAsFixed(1)}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  )
+                ],
               ),
               const SizedBox(
                 height: 20,
@@ -78,7 +90,7 @@ class DescriptionPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Text(
                   overView,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
             ],

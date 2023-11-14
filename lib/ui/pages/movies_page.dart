@@ -13,8 +13,7 @@ class MoviesPage extends StatelessWidget {
 
     final AppTheme appTheme = AppTheme();
     return MaterialApp(
-      themeMode: ThemeMode.system,
-      theme: appTheme.themeLight(),
+      theme: appTheme.themeDark(),
       home: DefaultTabController(
         length: 2,
         child: Scaffold(

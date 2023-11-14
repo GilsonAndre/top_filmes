@@ -4,5 +4,6 @@ class Strings {
   static const topRatedMovie = 'Mais Avaliados';
   static const synopsis = 'Sinopse';
 
+  static const note = ' ⭐ Nota';
   //Criar mensagens de erro
 }
