@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:top_filmes/data/models/movie_model.dart';
-import 'package:top_filmes/data/repositories/dio_repository.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
 import 'package:top_filmes/ui/resorces/widget/movie_list.dart';
 
@@ -9,7 +7,6 @@ class MoviesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DioRepository dioRepository = DioRepository();
 
     const String popularTypeMovie = 'popular?';
     const String topRatedTypeMovie = 'top_rated?';

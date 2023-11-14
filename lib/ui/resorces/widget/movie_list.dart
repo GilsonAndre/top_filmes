@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_filmes/data/models/movie_model.dart';
 import 'package:top_filmes/data/repositories/dio_repository.dart';
+import 'package:top_filmes/ui/pages/description_page.dart';
 
 class MovieList extends StatelessWidget {
   const MovieList({required this.movieType, super.key});
@@ -22,7 +23,20 @@ class MovieList extends StatelessWidget {
             scrollDirection: Axis.vertical,
             children: List.generate(itens.length, (index) {
               return InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DescriptionPage(
+                        title: itens[index].title,
+                        overView: itens[index].overView,
+                        voteAverage: itens[index].voteAverage,
+                        posterPath: itens[index].posterPath,
+                        backdropPath: itens[index].backdropPath,
+                      ),
+                    ),
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
