@@ -22,22 +22,22 @@ class MovieList extends StatelessWidget {
             crossAxisCount: 2,
             scrollDirection: Axis.vertical,
             children: List.generate(itens.length, (index) {
-              return InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DescriptionPage(
-                        title: itens[index].title,
-                        overView: itens[index].overView,
-                        voteAverage: itens[index].voteAverage,
-                        posterPath: itens[index].posterPath,
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DescriptionPage(
+                          title: itens[index].title,
+                          overView: itens[index].overView,
+                          voteAverage: itens[index].voteAverage,
+                          posterPath: itens[index].posterPath,
+                        ),
                       ),
-                    ),
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                    );
+                  },
                   child: Column(
                     children: [
                       Expanded(
@@ -57,7 +57,7 @@ class MovieList extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         child: Text(
                           itens[index].title,
-                          style: const TextStyle(fontSize: 16),
+                          style: Theme.of(context).textTheme.bodyMedium
                         ),
                       ),
                     ],

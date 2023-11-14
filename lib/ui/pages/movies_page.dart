@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:top_filmes/ui/resorces/app_theme.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
-import 'package:top_filmes/ui/resorces/widget/movie_list.dart';
+import 'package:top_filmes/ui/widget/movie_list.dart';
 
 class MoviesPage extends StatelessWidget {
   const MoviesPage({super.key});
@@ -10,17 +11,17 @@ class MoviesPage extends StatelessWidget {
     const String popularTypeMovie = 'popular?';
     const String topRatedTypeMovie = 'top_rated?';
 
+    final AppTheme appTheme = AppTheme();
     return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: appTheme.themeLight(),
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.deepOrange,
             title: const Text(Strings.appName),
             bottom: const TabBar(
-              indicator: BoxDecoration(
-                color: Colors.deepOrange,
-              ),
+              indicator: BoxDecoration(),
               tabs: [
                 Text(
                   Strings.popularMovie,

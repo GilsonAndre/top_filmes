@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:top_filmes/ui/resorces/app_theme.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
-import 'package:top_filmes/ui/resorces/widget/modified_text.dart';
+import 'package:top_filmes/ui/widget/modified_text.dart';
 
 class DescriptionPage extends StatelessWidget {
   const DescriptionPage({
@@ -18,61 +19,70 @@ class DescriptionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.orangeAccent,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 500,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(posterPath),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ModifiedText(
-              text: title,
-              size: 25,
-              color: Colors.black,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const ModifiedText(
-              text: Strings.synopsis,
-              size: 20,
+    final AppTheme appTheme = AppTheme();
+    return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: appTheme.themeLight(),
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_rounded,
               color: Colors.deepOrange,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            ModifiedText(
-              text: overView,
-              size: 20,
-              color: Colors.black,
-            ),
-          ],
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 500,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: NetworkImage(posterPath),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const ModifiedText(
+                text: Strings.synopsis,
+                size: 20,
+                color: Colors.deepOrange,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Text(
+                  overView,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
