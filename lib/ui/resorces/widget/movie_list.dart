@@ -37,17 +37,14 @@ class MovieList extends StatelessWidget {
                   );
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        flex: 4,
                         child: Container(
-                          padding: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              fit: BoxFit.fill,
+                              //fit: BoxFit.fill,
                               image: NetworkImage(
                                 itens[index].posterPath,
                               ),

@@ -7,7 +7,6 @@ class MoviesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     const String popularTypeMovie = 'popular?';
     const String topRatedTypeMovie = 'top_rated?';
 
@@ -19,17 +18,28 @@ class MoviesPage extends StatelessWidget {
             backgroundColor: Colors.deepOrange,
             title: const Text(Strings.appName),
             bottom: const TabBar(
+              indicator: BoxDecoration(
+                color: Colors.deepOrange,
+              ),
               tabs: [
-                Text(Strings.popularMovie),
-                Text(Strings.topRatedMovie),
+                Text(
+                  Strings.popularMovie,
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  Strings.topRatedMovie,
+                  style: TextStyle(fontSize: 20),
+                ),
               ],
             ),
           ),
           body: const TabBarView(
             children: [
               //Filmes Populares
+              //MovieList responsavel pela edição de tudo assim deixando essa pagina mais limpa
               MovieList(movieType: popularTypeMovie),
               //Filmes mais avalidods
+              //MovieList responsavel pela edição de tudo assim deixando essa pagina mais limpa
               MovieList(movieType: topRatedTypeMovie),
             ],
           ),
