@@ -32,7 +32,6 @@ class MovieList extends StatelessWidget {
                         overView: itens[index].overView,
                         voteAverage: itens[index].voteAverage,
                         posterPath: itens[index].posterPath,
-                        backdropPath: itens[index].backdropPath,
                       ),
                     ),
                   );

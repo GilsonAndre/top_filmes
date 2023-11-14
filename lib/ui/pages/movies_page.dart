@@ -16,6 +16,7 @@ class MoviesPage extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.deepOrange,
             title: const Text(Strings.appName),
             bottom: const TabBar(
               tabs: [
