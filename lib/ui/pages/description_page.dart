@@ -51,23 +51,26 @@ class DescriptionPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: ModifiedText(text: title, size: 25, color: Colors.black),
+            ModifiedText(
+              text: title,
+              size: 25,
+              color: Colors.black,
             ),
             const SizedBox(
               height: 20,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: ModifiedText(text: Strings.synopsis, size: 20, color: Colors.deepOrange),
+            const ModifiedText(
+              text: Strings.synopsis,
+              size: 20,
+              color: Colors.deepOrange,
             ),
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: ModifiedText(text: overView, size: 20, color: Colors.black),
+            ModifiedText(
+              text: overView,
+              size: 20,
+              color: Colors.black,
             ),
           ],
         ),

@@ -12,11 +12,14 @@ class ModifiedText extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: size,
-        color: color,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: size,
+          color: color,
+        ),
       ),
     );
   }

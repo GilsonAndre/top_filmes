@@ -52,6 +52,7 @@ class MovieList extends StatelessWidget {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 10.0,),
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Text(

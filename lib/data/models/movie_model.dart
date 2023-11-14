@@ -20,7 +20,8 @@ class MovieModel {
         title: map['title'],
         overView: map['overview'],
         voteAverage: map['vote_average'],
-        posterPath: 'https://image.tmdb.org/t/p/original/${map['poster_path']}',
+        posterPath: 
+            'https://image.tmdb.org/t/p/original/${map['poster_path']}',
         backdropPath:
             'https://image.tmdb.org/t/p/original/${map['backdrop_path']}',
       );
