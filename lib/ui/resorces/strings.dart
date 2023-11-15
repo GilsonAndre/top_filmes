@@ -5,5 +5,6 @@ class Strings {
   static const synopsis = 'Sinopse';
 
   static const note = ' ⭐ Nota';
-  //Criar mensagens de erro
+  //Mensagens de erro
+  static const errorCommon = 'Desculpe Ocorreu algum erro';
 }

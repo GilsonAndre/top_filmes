@@ -17,11 +17,11 @@ class MovieList extends StatelessWidget {
         if (snapshot.hasError) {
           return Text('Desculpe Ocorreu um erro ${snapshot.error}');
         } else if (snapshot.hasData) {
-          final itens = snapshot.data as List<MovieModel>;
+          final movies = snapshot.data as List<MovieModel>;
           return GridView.count(
             crossAxisCount: 2,
             scrollDirection: Axis.vertical,
-            children: List.generate(itens.length, (index) {
+            children: List.generate(movies.length, (index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -30,10 +30,10 @@ class MovieList extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => DescriptionPage(
-                          title: itens[index].title,
-                          overView: itens[index].overView,
-                          voteAverage: itens[index].voteAverage,
-                          posterPath: itens[index].posterPath,
+                          title: movies[index].title,
+                          overView: movies[index].overView,
+                          voteAverage: movies[index].voteAverage,
+                          posterPath: movies[index].posterPath,
                         ),
                       ),
                     );
@@ -46,19 +46,19 @@ class MovieList extends StatelessWidget {
                             image: DecorationImage(
                               //fit: BoxFit.fill,
                               image: NetworkImage(
-                                itens[index].posterPath,
+                                movies[index].posterPath,
                               ),
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10.0,),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
-                        child: Text(
-                          itens[index].title,
-                          style: Theme.of(context).textTheme.bodyMedium
-                        ),
+                        child: Text(movies[index].title,
+                            style: Theme.of(context).textTheme.bodyMedium),
                       ),
                     ],
                   ),
