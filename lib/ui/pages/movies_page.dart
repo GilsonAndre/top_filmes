@@ -13,6 +13,8 @@ class MoviesPage extends StatelessWidget {
 
     final AppTheme appTheme = AppTheme();
     return MaterialApp(
+      //Define o theme dark para o app
+      debugShowCheckedModeBanner: false,
       theme: appTheme.themeDark(),
       home: DefaultTabController(
         length: 2,
@@ -36,10 +38,10 @@ class MoviesPage extends StatelessWidget {
           body: const TabBarView(
             children: [
               //Filmes Populares
-              //MovieList responsavel pela edição de tudo assim deixando essa pagina mais limpa
+              //widget responsavel por deixar a pagina limpa
               MovieList(movieType: popularTypeMovie),
               //Filmes mais avalidods
-              //MovieList responsavel pela edição de tudo assim deixando essa pagina mais limpa
+              //widget responsavel por deixar a pagina limpa
               MovieList(movieType: topRatedTypeMovie),
             ],
           ),

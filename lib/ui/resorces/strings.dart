@@ -5,5 +5,4 @@ class Strings {
   static const synopsis = 'Sinopse';
 
   static const note = ' ⭐ Nota';
-  //Criar mensagens de erro
 }

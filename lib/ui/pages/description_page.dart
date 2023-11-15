@@ -21,12 +21,16 @@ class DescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppTheme appTheme = AppTheme();
     return MaterialApp(
+      //Define o theme dark para o app
+      debugShowCheckedModeBanner: false,
       theme: appTheme.themeDark(),
       home: Scaffold(
+        //isso faz com que a foto passe pelo app bar e deixa mais elegante
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
+          //botão de voltar
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -56,6 +60,7 @@ class DescriptionPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  //nota do filme
                   Positioned(
                     bottom: 20,
                     child: Text(
