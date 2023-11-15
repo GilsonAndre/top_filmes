@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:top_filmes/data/erros/exceptions.dart';
 import 'package:top_filmes/data/models/movie_model.dart';
+import 'package:top_filmes/ui/resorces/strings.dart';
 
 //chave da api
 const String apiKey = 'https://api.themoviedb.org/3/movie/';
@@ -33,7 +34,7 @@ class DioRepository {
       } else {
         //Caso de algum tipo de erro vai mostrar aqui
         print('${response.statusCode}');
-        throw ApiException(messege: 'Ouve um erro com a api');
+        throw ApiException(messege: Strings.errorCommon);
       }
     } catch (error, stacktrace) {
       //mensagem de erro basica para mostrar o erro e aonde que está o erro
