@@ -66,8 +66,10 @@ class MovieList extends StatelessWidget {
                       //Responsavel pelo titulo
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
-                        child: Text(movies[index].title,
-                            style: Theme.of(context).textTheme.bodyMedium),
+                        child: Text(
+                          movies[index].title,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
                     ],
                   ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_filmes/ui/resorces/app_theme.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
-import 'package:top_filmes/ui/widget/movie_list.dart';
+import 'package:top_filmes/ui/components/movie_list.dart';
 
 class MoviesPage extends StatelessWidget {
   const MoviesPage({super.key});

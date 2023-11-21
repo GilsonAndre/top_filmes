@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_filmes/ui/resorces/app_theme.dart';
 import 'package:top_filmes/ui/resorces/strings.dart';
-import 'package:top_filmes/ui/widget/modified_text.dart';
+import 'package:top_filmes/ui/components/modified_text.dart';
 
 class DescriptionPage extends StatelessWidget {
   const DescriptionPage({
