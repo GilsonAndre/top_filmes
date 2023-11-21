@@ -38,10 +38,8 @@ class MoviesPage extends StatelessWidget {
           body: const TabBarView(
             children: [
               //Filmes Populares
-              //widget responsavel por deixar a pagina limpa
               MovieList(movieType: popularTypeMovie),
               //Filmes mais avalidods
-              //widget responsavel por deixar a pagina limpa
               MovieList(movieType: topRatedTypeMovie),
             ],
           ),

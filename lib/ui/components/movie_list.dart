@@ -1,34 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:top_filmes/data/models/movie_model.dart';
-import 'package:top_filmes/data/repositories/dio_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_filmes/data/logic/cubit/movie_cubit.dart';
+//import 'package:top_filmes/data/repositories/dio_repository.dart';
 import 'package:top_filmes/ui/pages/description_page.dart';
 
-class MovieList extends StatelessWidget {
+class MovieList extends StatefulWidget {
   const MovieList({required this.movieType, super.key});
 
   final String movieType;
 
   @override
+  State<MovieList> createState() => _MovieListState();
+}
+
+class _MovieListState extends State<MovieList> {
+  @override
+  void initState() {
+    movieCubit.takeMovie(widget.movieType);
+    super.initState();
+  }
+
+  final MovieCubit movieCubit = MovieCubit();
+  @override
   Widget build(BuildContext context) {
-    DioRepository dioRepository = DioRepository();
-    return FutureBuilder(
-      //Função do meu repositorio que pega os detalhes dos filmes
-      future: dioRepository.getMovies(movieType),
-      builder: (context, snapshot) {
-        //Caso tenha erros
-        if (snapshot.hasError) {
-          return Center(
-            child: Text(
-              'Desculpe Ocorreu um erro ${snapshot.error}',
+    // DioRepository dioRepository = DioRepository();
+
+    return BlocBuilder<MovieCubit, MovieStates>(
+      bloc: movieCubit,
+      builder: (context, state) {
+        if (state is MovieLoading) {
+          return const Center(
+            child: SizedBox(
+              height: 100,
+              width: 100,
+              child: CircularProgressIndicator(),
             ),
           );
-          //caso tenha dado tudo certo
-        } else if (snapshot.hasData) {
-          final movies = snapshot.data as List<MovieModel>;
+        } else if (state is MovieSuccess) {
           return GridView.count(
             crossAxisCount: 2,
             scrollDirection: Axis.vertical,
-            children: List.generate(movies.length, (index) {
+            children: List.generate(state.movie.length, (index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
@@ -38,10 +50,10 @@ class MovieList extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => DescriptionPage(
-                          title: movies[index].title,
-                          overView: movies[index].overView,
-                          voteAverage: movies[index].voteAverage,
-                          posterPath: movies[index].posterPath,
+                          title: state.movie[index].title,
+                          overView: state.movie[index].overView,
+                          voteAverage: state.movie[index].voteAverage,
+                          posterPath: state.movie[index].posterPath,
                         ),
                       ),
                     );
@@ -54,7 +66,7 @@ class MovieList extends StatelessWidget {
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: NetworkImage(
-                                movies[index].posterPath,
+                                state.movie[index].posterPath,
                               ),
                             ),
                           ),
@@ -67,7 +79,7 @@ class MovieList extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Text(
-                          movies[index].title,
+                          state.movie[index].title,
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),
@@ -77,14 +89,12 @@ class MovieList extends StatelessWidget {
               );
             }),
           );
-        } else {
+        } else if (state is MovieError) {
           return const Center(
-            child: SizedBox(
-              height: 100,
-              width: 100,
-              child: CircularProgressIndicator(),
-            ),
+            child: Text('Ocorreu um erro com a api'),
           );
+        } else {
+          return const SizedBox();
         }
       },
     );
