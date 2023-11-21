@@ -6,6 +6,12 @@ class MovieInitial extends MovieStates {}
 
 class MovieLoading extends MovieStates {}
 
-class MovieSuccess extends MovieStates {}
+class MovieSuccess extends MovieStates {
+  MovieSuccess(this.movie);
+  final List<MovieModel> movie;
+}
 
-class MovieError extends MovieStates {}
+class MovieError extends MovieStates {
+  MovieError(this.error);
+  final String error;
+}
