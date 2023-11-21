@@ -32,7 +32,6 @@ class DioRepository {
         return movies;
       } else {
         //Caso de algum tipo de erro vai mostrar aqui
-        print('${response.statusCode}');
         throw ApiException(messege: 'Ouve um erro com a api');
       }
     } catch (error, stacktrace) {
